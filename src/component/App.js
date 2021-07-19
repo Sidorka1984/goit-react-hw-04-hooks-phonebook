@@ -8,9 +8,9 @@ import { GrContactInfo } from "react-icons/gr";
 import ContactsJson from "../Data/contacts.json";
 
 export default function App() {
-  const [contacts, setContacts] = useState(() => {
-    return JSON.parse(localStorage.getItem("contacts")) ?? ContactsJson;
-  });
+  const [contacts, setContacts] = useState(
+    JSON.parse(localStorage.getItem("contacts")) ?? ContactsJson
+  );
 
   const [filter, setFilter] = useState("");
   const firstRender = useRef(true);
@@ -62,7 +62,7 @@ export default function App() {
         <GrContactInfo /> Contacts
       </h2>
       <Filter value={filter} onChange={changeFilter} />
-      {contacts.lenght > 0 && (
+      {contacts.length > 0 && (
         <ContactsList
           contacts={getVisibleContacts()}
           onDeleteContact={deleteContact}
