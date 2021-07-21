@@ -8,12 +8,14 @@ import { GrContactInfo } from "react-icons/gr";
 import ContactsJson from "../Data/contacts.json";
 
 export default function App() {
-  const [contacts, setContacts] = useState(
-    JSON.parse(localStorage.getItem("contacts")) ?? ContactsJson
-  );
+  const [contacts, setContacts] = useState([]);
 
   const [filter, setFilter] = useState("");
   const firstRender = useRef(true);
+
+  useEffect(() => {
+    setContacts(JSON.parse(localStorage.getItem("contacts")) ?? ContactsJson);
+  }, []);
 
   useEffect(() => {
     if (firstRender.current) {
